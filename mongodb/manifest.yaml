@@ -24,3 +24,13 @@ spec:
       containers:
         - name: mongodb
           image: chaitanyavamsi/mongodb:v1
+      readinessProbe:
+        tcpSocket:
+          port: 27017
+        initialDelayseconds: 10
+        periodSeconds: 10
+      livenessProbe:
+        tcpSocket:
+          port: 27017
+        initialDelayseconds: 5
+        periodSeconds: 5
