@@ -13,7 +13,7 @@ kind: Deployment
 metadata:
   name: cart
   namespace: roboshop
-  # these are replica set labels
+  # these are deployment labels
   labels:
     project: roboshop
     component: cart
@@ -21,7 +21,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    # these labels are used to select pods
+    # Deployment manages pods with this label
     matchLabels:
       project: roboshop
       component: cart
@@ -29,7 +29,7 @@ spec:
   # pod definition
   template:
     metadata:
-      labels:
+      labels:  # <-- Pod label; Service will use this
         project: roboshop
         component: cart
         tier: backend
